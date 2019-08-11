@@ -157,4 +157,6 @@ let newArray = data.map((arrayItem) => {
   return newArticle;
 });
 
-newArray.forEach( component => { parent.appendChild(component)});
+let parentNode = document.querySelector('.articles');
+
+newArray.forEach(component => { parentNode.appendChild(component)});
