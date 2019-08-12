@@ -156,9 +156,9 @@ function createArticle() {
     const span = document.createElement('span');
     span.classList.add('expandButton');
     span.textContent = 'Read More';
-    thirdParagraph.appendChild(span);
+    div.appendChild(span);
   
-    span.addEventListener('click', () => thirdParagraph.toggle.classList('.article-open'));
+    span.addEventListener('click', () => parentNode.classList.toggle('.article-open'));
   return div;
 }
 
