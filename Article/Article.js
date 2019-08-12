@@ -85,7 +85,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+  title: 'Nick Made This Article',
+  date: 'Aug. 8th, 2019',
+  firstParagraph: 'Hello.',
+  secondParagraph: 'This is the second paragraph.',
+  thirdParagraph: 'This is the third paragraph.'
+  } 
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -113,60 +120,47 @@ const data = [
 
 */
 
-{/* <div class="article">
-  <h2>{title of the article}</h2>
-  <p class="date">{date of the article}</p>
-
-  {three separate paragraph elements}
-
-  <span class='expandButton'></span>
-</div> */}
-
-function createArticle() {
-  const article = document.createElement('div');
-  article.classList.add('article');
-  article.classList.add('article-open');
-
-    const header = document.createElement('h2');
-    let newHeaderArray = data.map((t) => { return t.title });
-    header.textContent = `${newHeaderArray[0]}`;
-    article.appendChild(header);
-  
-    const paragraphDate = document.createElement('p');
-    paragraphDate.classList.add('date');
-    let newDate = data.map((d) => { return d.date });
-    paragraphDate.textContent = `${newDate[0]}`;
-    article.appendChild(paragraphDate);
-  
-    const firstParagraph = document.createElement('p');
-    let firstParArray = data.map((p) => { return p.firstParagraph })
-    firstParagraph.textContent = `${firstParArray[0]}`;
-    article.appendChild(firstParagraph);
-  
-    const secondParagraph = document.createElement('p');
-    let secondParArray = data.map((p) => { return p.secondParagraph })
-    secondParagraph.textContent = `${secondParArray[0]}`;
-    article.appendChild(secondParagraph);
-
-    const thirdParagraph = document.createElement('p');
-    let thirdParArray = data.map((p) => { return p.thirdParagraph })
-    thirdParagraph.textContent = `${thirdParArray[0]}`;
-    article.appendChild(thirdParagraph);
-  
-    const span = document.createElement('span');
-    span.classList.add('expandButton');
-    span.textContent = 'Read More';
-    article.appendChild(span);
-  
-    span.addEventListener('click', () => articles.classList.toggle('.article-open'));
-  return article;
-}
-
-let newArray = data.map((arrayItem) => {
-  let newArticle = createArticle(arrayItem);
-  return newArticle;
-});
-
 let articles = document.querySelector('.articles');
 
-newArray.forEach(component => {articles.appendChild(component)});
+// ForEach method to create a new article and append it to the parentNode
+data.forEach(item => {
+  articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+})
+
+function createArticle(title, date, firstP, secondP, thirdP) {
+  // Creating Variables
+  const article = document.createElement('div');
+  const header = document.createElement('h2');
+  const paragraphDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const span = document.createElement('span');
+
+  // Adding ClassList's
+  article.classList.add('article');
+  article.classList.add('article-open');
+  paragraphDate.classList.add('date');
+  span.classList.add('expandButton');
+
+  // Appending the elements
+  article.appendChild(header);
+  article.appendChild(paragraphDate);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(span);
+  
+  // TextContent for the elements
+  header.textContent = title;
+  paragraphDate.textContent = date;
+  firstParagraph.textContent = firstP;
+  secondParagraph.textContent = secondP;
+  thirdParagraph.textContent = thirdP;
+  span.textContent = 'Read More';
+
+  // EventListener to toggle the class article-open.
+  span.addEventListener('click', (e) => articles.classList.toggle('.article-open'));
+
+  return article;
+}
