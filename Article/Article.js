@@ -127,28 +127,34 @@ function createArticle() {
   div.classList.add('article');
   div.classList.add('article-open');
 
-  const header = document.createElement('h2');
-  header.textContent = `${data.title}`;
+    const header = document.createElement('h2');
+    header.textContent = `${data.title}`;
+    div.appendChild(header);
+    console.log(header);
+  
+    const paragraphDate = document.createElement('p');
+    paragraphDate.classList.add('date');
+    paragraphDate.textContent = `${data.date}`
+    div.appendChild(paragraphDate);
+  
+    const firstParagraph = document.createElement('p');
+    firstParagraph.textContent = `${data.firstParagraph}`;
+    div.appendChild(firstParagraph);
+  
+    const secondParagraph = document.createElement('p');
+    secondParagraph.textContent = `${data.secondParagraph}`;
+    div.appendChild(secondParagraph);
 
-  const paragraphDate = document.createElement('p');
-  paragraphDate.classList.add('date');
-  paragraphDate.textContent = `${data.date}`
-
-  const firstParagraph = document.createElement('p');
-  firstParagraph.textContent = `${data.firstParagraph}`;
-
-  const secondParagraph = document.createElement('p');
-  secondParagraph.textContent = `${data.secondParagraph}`;
-
-  const thirdParagraph = document.createElement('p');
-  thirdParagraph.textContent = `${data.thirdParagraph}`;
-
-  const span = document.createElement('span');
-  span.classList.add('expandButton');
-
-  // let spanOpen = document.querySelector('.expandButton');
-  // spanOpen.addEventListener('click', (e) => e.target.toggle('.article-open'));
-
+    const thirdParagraph = document.createElement('p');
+    thirdParagraph.textContent = `${data.thirdParagraph}`;
+    div.appendChild(thirdParagraph);
+  
+    const span = document.createElement('span');
+    span.classList.add('expandButton');
+    div.appendChild(span);
+  
+    // let spanOpen = document.querySelector('.expandButton');
+    // spanOpen.addEventListener('click', (e) => e.target.toggle('.article-open'));
   return div;
 }
 
@@ -159,4 +165,4 @@ let newArray = data.map((arrayItem) => {
 
 let parentNode = document.querySelector('.articles');
 
-newArray.forEach(component => { parentNode.appendChild(component)});
+newArray.forEach(component => {parentNode.appendChild(component)});
