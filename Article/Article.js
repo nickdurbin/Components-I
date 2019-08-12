@@ -123,43 +123,43 @@ const data = [
 </div> */}
 
 function createArticle() {
-  const div = document.createElement('div');
-  div.classList.add('article');
-  div.classList.add('article-open');
+  const article = document.createElement('div');
+  article.classList.add('article');
+  article.classList.add('article-open');
 
     const header = document.createElement('h2');
     let newHeaderArray = data.map((t) => { return t.title });
     header.textContent = `${newHeaderArray[0]}`;
-    div.appendChild(header);
+    article.appendChild(header);
   
     const paragraphDate = document.createElement('p');
     paragraphDate.classList.add('date');
     let newDate = data.map((d) => { return d.date });
     paragraphDate.textContent = `${newDate[0]}`;
-    div.appendChild(paragraphDate);
+    article.appendChild(paragraphDate);
   
     const firstParagraph = document.createElement('p');
     let firstParArray = data.map((p) => { return p.firstParagraph })
     firstParagraph.textContent = `${firstParArray[0]}`;
-    div.appendChild(firstParagraph);
+    article.appendChild(firstParagraph);
   
     const secondParagraph = document.createElement('p');
     let secondParArray = data.map((p) => { return p.secondParagraph })
     secondParagraph.textContent = `${secondParArray[0]}`;
-    div.appendChild(secondParagraph);
+    article.appendChild(secondParagraph);
 
     const thirdParagraph = document.createElement('p');
     let thirdParArray = data.map((p) => { return p.thirdParagraph })
     thirdParagraph.textContent = `${thirdParArray[0]}`;
-    div.appendChild(thirdParagraph);
+    article.appendChild(thirdParagraph);
   
     const span = document.createElement('span');
     span.classList.add('expandButton');
-    div.appendChild(span);
+    span.textContent = 'Read More';
+    article.appendChild(span);
   
-    // let spanOpen = document.querySelector('.expandButton');
-    // spanOpen.addEventListener('click', (e) => e.target.toggle('.article-open'));
-  return div;
+    span.addEventListener('click', () => articles.classList.toggle('.article-open'));
+  return article;
 }
 
 let newArray = data.map((arrayItem) => {
@@ -167,6 +167,6 @@ let newArray = data.map((arrayItem) => {
   return newArticle;
 });
 
-let parentNode = document.querySelector('.articles');
+let articles = document.querySelector('.articles');
 
-newArray.forEach(component => {parentNode.appendChild(component)});
+newArray.forEach(component => {articles.appendChild(component)});
