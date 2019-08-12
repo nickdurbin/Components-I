@@ -34,6 +34,11 @@ let menuItems = [
   
 */
 
+let menuBtn = document.querySelector('.menu-button');
+let header = document.querySelector('.header');
+
+header.appendChild(makeMenu(menuItems));
+
 function makeMenu(list) {
   let menu = document.createElement('div');
   menu.classList.add('menu');
@@ -51,7 +56,3 @@ function makeMenu(list) {
 
   return menu;
 }
-
-let menuBtn = document.querySelector('.menu-button');
-let header = document.querySelector('.header');
-header.appendChild(makeMenu(menuItems));

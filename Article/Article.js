@@ -153,7 +153,7 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   span.textContent = 'Read More';
 
   // EventListener to toggle the class article-open.
-  span.addEventListener('click', () => articles.classList.toggle('.article-open'));
+  span.addEventListener('click', (e) => articles.classList.toggle('.article-open'));
 
   return article;
 }
