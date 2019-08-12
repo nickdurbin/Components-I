@@ -34,24 +34,24 @@ let menuItems = [
   
 */
 
-function makeMenu() {
+function makeMenu(list) {
   let menu = document.createElement('div');
   menu.classList.add('menu');
 
-  let unOrder = document.createElement('ul');
-  menu.appendChild(unOrder);
+  let menuList = document.createElement('ul');
+  menu.appendChild(menuList);
 
-  document.createElement('li');
-  menuItems.forEach((item) => { let newItem = makeMenu(item)
-  unOrder.appendChild(newItem);});
-  console.log(newItem);
-
-  let menuBtn = document.querySelector('.menu-button');
-  menuBtn.addEventListener('click', (e) => e.toggle.classList('.menu-button'));
-  console.log(menuBtn);
-
-  menuBtn.appendChild(menu);
+  list.forEach((item) => { 
+    let newItem = document.createElement('li'); 
+    menuList.appendChild(newItem);
+    newItem.textContent = item;
+  });
+  
+  menuBtn.addEventListener('click', () => menu.toggle.classList('.menu--open'));
 
   return menu;
 }
 
+let menuBtn = document.querySelector('.menu-button');
+let header = document.querySelector('.header');
+header.appendChild(makeMenu(menuItems));
