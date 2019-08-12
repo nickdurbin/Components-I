@@ -52,7 +52,7 @@ function makeMenu(list) {
     newItem.textContent = item;
   });
   
-  menuBtn.addEventListener('click', () => menu.classList.toggle('.menu--open'));
+  menuBtn.addEventListener('click', () => menu.classList.toggle('menu--open'));
 
   return menu;
 }

@@ -139,7 +139,6 @@ function createArticle(title, date, firstP, secondP, thirdP) {
 
   // Adding ClassList's
   article.classList.add('article');
-  article.classList.add('article-open');
   paragraphDate.classList.add('date');
   span.classList.add('expandButton');
 
@@ -160,7 +159,7 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   span.textContent = 'Read More';
 
   // EventListener to toggle the class article-open.
-  span.addEventListener('click', (e) => articles.classList.toggle('.article-open'));
+  span.addEventListener('click', () => article.classList.toggle('article-open'));
 
   return article;
 }
