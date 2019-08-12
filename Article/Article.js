@@ -158,7 +158,7 @@ function createArticle() {
     div.appendChild(span);
   
     // let spanOpen = document.querySelector('.expandButton');
-    // spanOpen.addEventListener('click', (e) => e.target.toggle('.article-open'));
+    // spanOpen.addEventListener('click', (e) => e.toggle.classList('.article-open'));
   return div;
 }
 
