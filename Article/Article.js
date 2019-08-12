@@ -128,25 +128,29 @@ function createArticle() {
   div.classList.add('article-open');
 
     const header = document.createElement('h2');
-    header.textContent = `${data.title}`;
+    let newHeaderArray = data.map((t) => { return t.title });
+    header.textContent = `${newHeaderArray[0]}`;
     div.appendChild(header);
-    console.log(header);
   
     const paragraphDate = document.createElement('p');
     paragraphDate.classList.add('date');
-    paragraphDate.textContent = `${data.date}`
+    let newDate = data.map((d) => { return d.date });
+    paragraphDate.textContent = `${newDate[0]}`;
     div.appendChild(paragraphDate);
   
     const firstParagraph = document.createElement('p');
-    firstParagraph.textContent = `${data.firstParagraph}`;
+    let firstParArray = data.map((p) => { return p.firstParagraph })
+    firstParagraph.textContent = `${firstParArray[0]}`;
     div.appendChild(firstParagraph);
   
     const secondParagraph = document.createElement('p');
-    secondParagraph.textContent = `${data.secondParagraph}`;
+    let secondParArray = data.map((p) => { return p.secondParagraph })
+    secondParagraph.textContent = `${secondParArray[0]}`;
     div.appendChild(secondParagraph);
 
     const thirdParagraph = document.createElement('p');
-    thirdParagraph.textContent = `${data.thirdParagraph}`;
+    let thirdParArray = data.map((p) => { return p.thirdParagraph })
+    thirdParagraph.textContent = `${thirdParArray[0]}`;
     div.appendChild(thirdParagraph);
   
     const span = document.createElement('span');
