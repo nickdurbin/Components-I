@@ -155,10 +155,10 @@ function createArticle() {
   
     const span = document.createElement('span');
     span.classList.add('expandButton');
-    div.appendChild(span);
+    span.textContent = 'Read More';
+    thirdParagraph.appendChild(span);
   
-    // let spanOpen = document.querySelector('.expandButton');
-    // spanOpen.addEventListener('click', (e) => e.toggle.classList('.article-open'));
+    span.addEventListener('click', () => thirdParagraph.toggle.classList('.article-open'));
   return div;
 }
 
