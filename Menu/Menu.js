@@ -35,21 +35,23 @@ let menuItems = [
 */
 
 function makeMenu() {
-  let div = document.createElement('div');
-  div.classList.add('menu');
-  let unOrder = document.createElement('ul');
-  div.appendChild(unOrder);
+  let menu = document.createElement('div');
+  menu.classList.add('menu');
 
-  let listItem = document.createElement('li');
+  let unOrder = document.createElement('ul');
+  menu.appendChild(unOrder);
+
+  document.createElement('li');
   menuItems.forEach((item) => { let newItem = makeMenu(item)
-  unOrder.appendChild(newItem);})
+  unOrder.appendChild(newItem);});
+  console.log(newItem);
 
   let menuBtn = document.querySelector('.menu-button');
   menuBtn.addEventListener('click', (e) => e.toggle.classList('.menu-button'));
+  console.log(menuBtn);
 
-  let header = document.querySelector('.header');
-header.appendChild(div);
+  menuBtn.appendChild(menu);
 
-  return div;
+  return menu;
 }
 
