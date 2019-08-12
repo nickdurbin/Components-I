@@ -101,7 +101,7 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
@@ -113,11 +113,60 @@ const data = [
 
 */
 
-<div class="article">
+{/* <div class="article">
   <h2>{title of the article}</h2>
   <p class="date">{date of the article}</p>
 
   {three separate paragraph elements}
 
   <span class='expandButton'></span>
-</div>
+</div> */}
+
+function createArticle() {
+  const div = document.createElement('div');
+  div.classList.add('article');
+  div.classList.add('article-open');
+
+    const header = document.createElement('h2');
+    let newHeaderArray = data.map((t) => { return t.title });
+    header.textContent = `${newHeaderArray[0]}`;
+    div.appendChild(header);
+  
+    const paragraphDate = document.createElement('p');
+    paragraphDate.classList.add('date');
+    let newDate = data.map((d) => { return d.date });
+    paragraphDate.textContent = `${newDate[0]}`;
+    div.appendChild(paragraphDate);
+  
+    const firstParagraph = document.createElement('p');
+    let firstParArray = data.map((p) => { return p.firstParagraph })
+    firstParagraph.textContent = `${firstParArray[0]}`;
+    div.appendChild(firstParagraph);
+  
+    const secondParagraph = document.createElement('p');
+    let secondParArray = data.map((p) => { return p.secondParagraph })
+    secondParagraph.textContent = `${secondParArray[0]}`;
+    div.appendChild(secondParagraph);
+
+    const thirdParagraph = document.createElement('p');
+    let thirdParArray = data.map((p) => { return p.thirdParagraph })
+    thirdParagraph.textContent = `${thirdParArray[0]}`;
+    div.appendChild(thirdParagraph);
+  
+    const span = document.createElement('span');
+    span.classList.add('expandButton');
+    div.appendChild(span);
+  
+    // let spanOpen = document.querySelector('.expandButton');
+    // spanOpen.addEventListener('click', (e) => e.target.toggle('.article-open'));
+  return div;
+}
+
+let newArray = data.map((arrayItem) => {
+  let newArticle = createArticle(arrayItem);
+  return newArticle;
+});
+
+let parentNode = document.querySelector('.articles');
+
+newArray.forEach(component => {parentNode.appendChild(component)});
