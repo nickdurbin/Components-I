@@ -176,7 +176,13 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   close.addEventListener('click', () => article.remove('article'));
 
   // EventListener to toggle the class article-open.
-  span.addEventListener('click', () => article.classList.toggle('article-open'));
+  span.addEventListener('click', () => {
+    if (article.classList.toggle('article-open')) {
+      span.textContent = 'Read Less';
+    } else {
+      span.textContent = 'Read More';
+    }
+  });
 
   return article;
 }
