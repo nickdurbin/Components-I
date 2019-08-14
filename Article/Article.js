@@ -130,6 +130,7 @@ data.forEach(item => {
 function createArticle(title, date, firstP, secondP, thirdP) {
   // Creating Variables
   const article = document.createElement('div');
+  const close = document.createElement('span');
   const header = document.createElement('h2');
   const paragraphDate = document.createElement('p');
   const firstParagraph = document.createElement('p');
@@ -138,11 +139,13 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   const span = document.createElement('span');
 
   // Adding ClassList's
+  span.classList.add('close-btn');
   article.classList.add('article');
   paragraphDate.classList.add('date');
   span.classList.add('expandButton');
 
   // Appending the elements
+  article.appendChild(close);
   article.appendChild(header);
   article.appendChild(paragraphDate);
   article.appendChild(firstParagraph);
@@ -151,6 +154,7 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   article.appendChild(span);
   
   // TextContent for the elements
+  close.textContent = 'X';
   header.textContent = title;
   paragraphDate.textContent = date;
   firstParagraph.textContent = firstP;
@@ -158,8 +162,27 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   thirdParagraph.textContent = thirdP;
   span.textContent = 'Read More';
 
+  // Style close span
+  close.style.color = 'black';
+  close.style.fontSize = '1.2rem';
+  close.style.position = 'absolute';
+  close.style.left = '95%';
+  close.style.top = '5%';
+  close.style.cursor = 'pointer';
+
+  // EventListener to have hover effect and to delete the article
+  close.addEventListener('mouseover', (e) => e.currentTarget.style.transform = 'scale(1.1)');
+  close.addEventListener('mouseout', (e) => e.currentTarget.style.transform = 'scale(1.00)');
+  close.addEventListener('click', () => article.remove('article'));
+
   // EventListener to toggle the class article-open.
-  span.addEventListener('click', () => article.classList.toggle('article-open'));
+  span.addEventListener('click', () => {
+    if (article.classList.toggle('article-open')) {
+      span.textContent = 'Read Less';
+    } else {
+      span.textContent = 'Read More';
+    }
+  });
 
   return article;
 }
