@@ -170,7 +170,9 @@ function createArticle(title, date, firstP, secondP, thirdP) {
   close.style.top = '5%';
   close.style.cursor = 'pointer';
 
-  // EventListener to delete the article
+  // EventListener to have hover effect and to delete the article
+  close.addEventListener('mouseover', (e) => e.currentTarget.style.transform = 'scale(1.1)');
+  close.addEventListener('mouseout', (e) => e.currentTarget.style.transform = 'scale(1.00)');
   close.addEventListener('click', () => article.remove('article'));
 
   // EventListener to toggle the class article-open.
